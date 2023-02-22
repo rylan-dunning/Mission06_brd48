@@ -15,16 +15,33 @@ namespace Mission06_brd48.Models
         }
 
         public DbSet<FormResponse> responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+        //Seed data
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId = 1, CategoryName = "Fantasy"},
+                new Category { CategoryId = 2, CategoryName = "Science Fiction" },
+                new Category { CategoryId = 3, CategoryName = "Comedy" },
+                new Category { CategoryId = 4, CategoryName = "Romance" },
+                new Category { CategoryId = 5, CategoryName = "Action" },
+                new Category { CategoryId = 6, CategoryName = "Drama" },
+                new Category { CategoryId = 7, CategoryName = "Animated" },
+                new Category { CategoryId = 8, CategoryName = "Thriller" },
+                new Category { CategoryId = 9, CategoryName = "Horror" },
+                new Category { CategoryId = 10, CategoryName = "History" },
+                new Category { CategoryId = 11, CategoryName = "Documentary" },
+                new Category { CategoryId = 12, CategoryName = "Other" }
+            );
+
             mb.Entity<FormResponse>().HasData(
 
                 new FormResponse
                 {
                     MovieId = 1,
                     MovieTitle = "Harry Potter and the Goblet of Fire",
-                    Category = "Fantasy",
+                    CategoryId = 1, //"Fantasy",
                     Year = 2005,
                     Director = "Mike Newell",
                     Rating = "PG-13",
@@ -36,7 +53,7 @@ namespace Mission06_brd48.Models
                 {
                     MovieId = 2,
                     MovieTitle = "Interstellar",
-                    Category = "Sci-fi",
+                    CategoryId = 2, //"Sci-fi",
                     Year = 2014,
                     Director = "Christopher Nolan",
                     Rating = "PG-13",
@@ -48,7 +65,7 @@ namespace Mission06_brd48.Models
                 {
                     MovieId = 3,
                     MovieTitle = "Hot Rod",
-                    Category = "Comedy",
+                    CategoryId = 3, //"Comedy",
                     Year = 2007,
                     Director = "Akiva Schaffer",
                     Rating = "PG-13",
